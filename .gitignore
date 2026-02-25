@@ -1,0 +1,36 @@
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore virtual environment directories
+venv/
+.env/
+_bmad-output/
+_bmad/
+docs/
+.agents/
+.claude/
+
+# Ignore IDE-specific files
+.idea/
+.vscode/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore build artifacts
+_bmad-output/
+
+# Ignore other temporary files
+*.bak
+*.swp
+*.swo
+
+# Ignore node_modules (if applicable)
+node_modules/
