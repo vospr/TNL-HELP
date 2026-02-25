@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "concierge": "./src/concierge/graph/__init__.py:graph"
+  },
+  "env": ".env"
+}
