@@ -1,36 +1,57 @@
-# Ignore Python bytecode files
+# Secrets — NEVER commit
+.env
+
+# Runtime-generated memory files — never commit session files
+# Note: no leading slash for Windows git compatibility (FM7)
+memory/sessions/*.json
+!memory/sessions/.gitkeep
+
+# Python artifacts
+__pycache__/
 *.pyc
 *.pyo
-__pycache__/
+*.pyd
+.Python
 
-# Ignore virtual environment directories
+# Virtual environment
+.venv/
 venv/
-.env/
-_bmad-output/
-_bmad/
-docs/
-.agents/
-.claude/
+env/
 
-# Ignore IDE-specific files
-.idea/
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Test and tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# IDE
 .vscode/
+.idea/
 
-# Ignore system files
+# OS
 .DS_Store
 Thumbs.db
 
-# Ignore logs and temporary files
+# Logs and temp files
 *.log
 *.tmp
-
-# Ignore build artifacts
-_bmad-output/
-
-# Ignore other temporary files
 *.bak
 *.swp
 *.swo
 
-# Ignore node_modules (if applicable)
+# Node (if applicable)
 node_modules/
+
+# uv — lock file is COMMITTED, do NOT add uv.lock here
+
+# Dev tooling (BMAD, Claude Code config) — not part of project code
+_bmad/
+_bmad-output/
+.agents/
+.claude/

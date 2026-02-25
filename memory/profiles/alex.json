@@ -1,0 +1,91 @@
+{
+  "user_id": "alex",
+  "preferred_name": "Alex",
+  "past_trips": [
+    {
+      "destination": "Bali, Indonesia",
+      "property_name": "Wyndham Garden Kuta Beach Bali",
+      "dates": "2025-03-10 to 2025-03-17",
+      "notes": "Loved the beach access and spa. Asked about surfing lessons — add to activities list."
+    },
+    {
+      "destination": "Tokyo, Japan",
+      "property_name": null,
+      "dates": "2024-11-20 to 2024-11-28",
+      "notes": "Independent hotel. Focus was food and cultural sites — no resort preference expressed."
+    }
+  ],
+  "preferences": {
+    "travel_style": "luxury_resort",
+    "room_type": "ocean_view",
+    "activities": ["beach", "spa", "snorkeling", "local_cuisine"],
+    "diet": "no_restrictions",
+    "preferred_regions": ["Southeast Asia", "Pacific Islands"],
+    "budget_tier": "premium"
+  },
+  "cached_research": {
+    "topic": "Southeast Asia beach destinations 2026",
+    "session_id": "session_20260210_alex",
+    "destinations_explored": ["Bali", "Phuket", "Koh Samui", "Maldives"],
+    "last_query": "What are the best beach resorts in Southeast Asia for March 2026?",
+    "cached_at": "2026-02-10T14:32:00Z"
+  },
+  "_demo_notes": {
+    "preferred_name": "Alex",
+    "demo_scenario": "Frequent premium traveler with Bali and Tokyo history. Southeast Asia is the active research context. Demo showcases: proactive greeting (memory load), two Stage 1 routing hits, two Stage 2 LLM escalations, and one guardrail boundary. Reset with: git checkout -- memory/profiles/alex.json",
+    "routing_showcase_queries": [
+      {
+        "turn": 1,
+        "query": "What Wyndham properties are available in Bali?",
+        "expected_stage": "stage_1_keyword",
+        "expected_route": "rag",
+        "expected_intent": "property_lookup",
+        "expected_confidence_min": 0.85,
+        "demonstrates": "Stage 1 deterministic routing — brand name + destination = direct KB hit, no LLM call",
+        "trace_expected": "[DISPATCHER] intent=property_lookup confidence=0.91 → rag"
+      },
+      {
+        "turn": 2,
+        "query": "Tell me about Koh Samui",
+        "expected_stage": "stage_1_keyword",
+        "expected_route": "rag",
+        "expected_intent": "destination_info",
+        "expected_confidence_min": 0.80,
+        "demonstrates": "Stage 1 — known destination keyword triggers direct KB routing",
+        "trace_expected": "[DISPATCHER] intent=destination_info confidence=0.83 → rag"
+      },
+      {
+        "turn": 3,
+        "query": "I'm thinking Southeast Asia but not sure where to go",
+        "expected_stage": "stage_2_llm",
+        "expected_route": "research",
+        "expected_intent": "destination_research",
+        "expected_confidence_min": 0.75,
+        "demonstrates": "Stage 2 LLM escalation — ambiguous intent below escalation_threshold triggers LLM classification; hybrid dispatcher visible in trace",
+        "trace_expected": "[DISPATCHER] intent=ambiguous confidence=0.58 → escalating to LLM | [DISPATCHER] LLM: destination_research confidence=0.84 → research"
+      },
+      {
+        "turn": 4,
+        "query": "What are the best beach destinations trending right now?",
+        "expected_stage": "stage_2_llm",
+        "expected_route": "research",
+        "expected_intent": "trend_research",
+        "expected_confidence_min": 0.78,
+        "demonstrates": "Stage 2 LLM — 'trending right now' signals web research need; LLM correctly classifies over KB",
+        "trace_expected": "[DISPATCHER] LLM: trend_research confidence=0.81 → research"
+      },
+      {
+        "turn": 5,
+        "query": "What's your opinion on cryptocurrency investments?",
+        "expected_stage": "guardrail",
+        "expected_route": "fallback",
+        "expected_intent": "out_of_domain",
+        "expected_confidence_min": 0.0,
+        "demonstrates": "Guardrail boundary — out-of-domain query deflected with helpful redirect; no hallucinated financial advice",
+        "trace_expected": "[DISPATCHER] intent=out_of_domain → guardrail | [GUARDRAIL] domain_check=failed → human_handoff"
+      }
+    ],
+    "followup_condition_triggers_on": "turns 3 and 4 — confidence >= 0.8, route = research, turn_id > 1, no clarification",
+    "reset_command": "git checkout -- memory/profiles/alex.json"
+  }
+}
