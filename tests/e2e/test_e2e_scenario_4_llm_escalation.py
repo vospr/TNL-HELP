@@ -177,7 +177,10 @@ class TestStage1NoMatch:
 # ---------------------------------------------------------------------------
 
 class TestStage2LLMEscalation:
-    def test_stage2_is_invoked_when_stage1_finds_no_match(self, monkeypatch: pytest.MonkeyPatch) -> None:
+    @pytest.fixture(autouse=True)
+    def _setup_fake_anthropic(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        """Set up environment variables and a fake Anthropic module for every test
+        in this class, eliminating repeated boilerplate across all 5 tests."""
         monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-scenario-4")
         monkeypatch.delenv("FAST_MODE", raising=False)
 
@@ -186,6 +189,10 @@ class TestStage2LLMEscalation:
         )
         monkeypatch.setitem(sys.modules, "anthropic", fake_mod)
 
+        # Expose the recorder on the instance so individual tests can inspect it.
+        self._recorder = recorder
+
+    def test_stage2_is_invoked_when_stage1_finds_no_match(self, monkeypatch: pytest.MonkeyPatch) -> None:
         state = initialize_state(
             user_id="alex",
             session_id="session-e2e-s4-stage2",
@@ -195,19 +202,11 @@ class TestStage2LLMEscalation:
         agent = DispatcherAgent()
         agent.run(state)
 
-        assert recorder["calls"] == 1, "Stage 2 LLM must be called exactly once"
+        assert self._recorder["calls"] == 1, "Stage 2 LLM must be called exactly once"
 
     def test_stage2_llm_receives_correct_model_and_token_budget(
         self, monkeypatch: pytest.MonkeyPatch
     ) -> None:
-        monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-scenario-4")
-        monkeypatch.delenv("FAST_MODE", raising=False)
-
-        fake_mod, recorder = _build_fake_anthropic_module(
-            f'{{"intent":"{_LLM_RESPONSE_INTENT}","confidence":{_LLM_RESPONSE_CONFIDENCE}}}'
-        )
-        monkeypatch.setitem(sys.modules, "anthropic", fake_mod)
-
         state = initialize_state(
             user_id="alex",
             session_id="session-e2e-s4-model",
@@ -216,7 +215,7 @@ class TestStage2LLMEscalation:
         )
         DispatcherAgent().run(state)
 
-        kwargs = recorder["last_kwargs"]
+        kwargs = self._recorder["last_kwargs"]
         assert kwargs is not None
         # model must match dispatcher/policy.yaml (claude-opus-4-6 when FAST_MODE is off)
         assert kwargs["model"] == "claude-opus-4-6", (
@@ -236,14 +235,6 @@ class TestStage2LLMEscalation:
     def test_stage2_parses_intent_and_confidence_from_llm_response(
         self, monkeypatch: pytest.MonkeyPatch
     ) -> None:
-        monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-scenario-4")
-        monkeypatch.delenv("FAST_MODE", raising=False)
-
-        fake_mod, _ = _build_fake_anthropic_module(
-            f'{{"intent":"{_LLM_RESPONSE_INTENT}","confidence":{_LLM_RESPONSE_CONFIDENCE}}}'
-        )
-        monkeypatch.setitem(sys.modules, "anthropic", fake_mod)
-
         state = initialize_state(
             user_id="alex",
             session_id="session-e2e-s4-parse",
@@ -262,14 +253,6 @@ class TestStage2LLMEscalation:
     def test_stage2_low_confidence_sets_route_to_fallback(
         self, monkeypatch: pytest.MonkeyPatch
     ) -> None:
-        monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-scenario-4")
-        monkeypatch.delenv("FAST_MODE", raising=False)
-
-        fake_mod, _ = _build_fake_anthropic_module(
-            f'{{"intent":"{_LLM_RESPONSE_INTENT}","confidence":{_LLM_RESPONSE_CONFIDENCE}}}'
-        )
-        monkeypatch.setitem(sys.modules, "anthropic", fake_mod)
-
         state = initialize_state(
             user_id="alex",
             session_id="session-e2e-s4-fallback",
