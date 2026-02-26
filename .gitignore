@@ -3,7 +3,8 @@
 
 # Runtime-generated memory files — never commit session files
 # Note: no leading slash for Windows git compatibility (FM7)
-memory/sessions/*.json
+# Ignore all session subdirectories (files live at memory/sessions/{id}/state.json)
+memory/sessions/*/
 !memory/sessions/.gitkeep
 
 # Python artifacts

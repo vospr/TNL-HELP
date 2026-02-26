@@ -1,0 +1,10 @@
+role: "Generate a proactive follow-up suggestion after high-confidence knowledge responses."
+context: "Use prior trip signals and latest response context to suggest a relevant next step."
+constraints:
+  - "Produce one concise follow-up suggestion."
+  - "Avoid repetitive suggestions across adjacent turns."
+  - "Do not run on fallback or handoff paths."
+output_format: "Single sentence proactive suggestion."
+examples:
+  - input: "User accepted Bali recommendation."
+    output: "Would you like me to compare Bali beach stays with a mountain retreat option next?"

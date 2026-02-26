@@ -1,0 +1,80 @@
+[
+  {
+    "id": "dest-bali",
+    "name": "Bali",
+    "region": "Southeast Asia",
+    "description": "Bali is a resort-friendly island with strong beach and wellness options. Travelers often combine surf towns with spa-focused stays for a balanced trip. The destination works well for couples, families, and flexible multi-stop itineraries.",
+    "amenities": ["beach", "spa", "surfing", "resort"],
+    "pricing": {
+      "currency": "USD",
+      "avg_nightly_min": 110,
+      "avg_nightly_max": 340,
+      "budget_tier": "mid_to_premium"
+    }
+  },
+  {
+    "id": "dest-phuket",
+    "name": "Phuket",
+    "region": "Southeast Asia",
+    "description": "Phuket offers a broad range of beachfront properties and island excursions. The area supports both nightlife-heavy travel and quieter bay-side relaxation. It is a practical base for travelers who want beach access with many day-trip options.",
+    "amenities": ["beach", "island_hopping", "snorkeling", "nightlife"],
+    "pricing": {
+      "currency": "USD",
+      "avg_nightly_min": 95,
+      "avg_nightly_max": 300,
+      "budget_tier": "mid_to_premium"
+    }
+  },
+  {
+    "id": "dest-koh-samui",
+    "name": "Koh Samui",
+    "region": "Southeast Asia",
+    "description": "Koh Samui is known for boutique resorts and slower-paced island stays. Visitors typically focus on relaxation, local dining, and wellness activities. It fits travelers who prioritize quieter scenery over dense urban activity.",
+    "amenities": ["wellness", "island_hopping", "local_cuisine", "resort"],
+    "pricing": {
+      "currency": "USD",
+      "avg_nightly_min": 105,
+      "avg_nightly_max": 290,
+      "budget_tier": "mid_to_premium"
+    }
+  },
+  {
+    "id": "dest-tokyo",
+    "name": "Tokyo",
+    "region": "East Asia",
+    "description": "Tokyo is a major city destination with deep food, culture, and shopping coverage. The transit system supports efficient exploration across many neighborhoods. It is a strong option for travelers seeking high-density city experiences and varied itineraries.",
+    "amenities": ["city", "culture", "shopping", "public_transit"],
+    "pricing": {
+      "currency": "USD",
+      "avg_nightly_min": 130,
+      "avg_nightly_max": 420,
+      "budget_tier": "mid_to_luxury"
+    }
+  },
+  {
+    "id": "dest-bangkok",
+    "name": "Bangkok",
+    "region": "Southeast Asia",
+    "description": "Bangkok is a city hub that blends modern districts with historic landmarks. Travelers often use it as both a stopover and a stand-alone urban trip. It is effective for city-focused plans with strong dining, markets, and regional flight connectivity.",
+    "amenities": ["city", "food", "markets", "nightlife"],
+    "pricing": {
+      "currency": "USD",
+      "avg_nightly_min": 70,
+      "avg_nightly_max": 240,
+      "budget_tier": "budget_to_premium"
+    }
+  },
+  {
+    "id": "dest-maldives",
+    "name": "Maldives",
+    "region": "Indian Ocean",
+    "description": "The Maldives is a premium island destination centered on overwater stays and ocean activities. Most itineraries are designed around resort life and limited transfers between islands. It is best suited for travelers prioritizing privacy, water views, and high-touch service.",
+    "amenities": ["snorkeling", "diving", "private_villa", "resort"],
+    "pricing": {
+      "currency": "USD",
+      "avg_nightly_min": 350,
+      "avg_nightly_max": 1200,
+      "budget_tier": "premium_to_luxury"
+    }
+  }
+]

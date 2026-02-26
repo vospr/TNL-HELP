@@ -1,0 +1,63 @@
+We are looking for an AI-Native Developer who combines strong Python engineering
+skills with the ability to use AI tools and spec-driven development to deliver
+end-to-end conversational AI solutions.
+
+You will work closely with architects to create executable specifications that
+define system behavior, using AI to generate, validate, and refine code
+throughout the development lifecycle.
+
+This role supports the development of Client Concierge conversational solutions
+— systems that deliver high personalization, cross-channel continuity, and
+proactive outcome completion for users.
+
+
+KEY RESPONSIBILITIES
+
+• Deliver end-to-end conversational AI features based on collaboratively
+defined executable specifications.
+• Partner with architects to translate business logic and process definitions
+into structured specifications that guide implementation.
+• Use AI-assisted tooling for code generation, refinement, testing, and
+workflow optimization.
+• Develop backend services and integrations that support multi-turn,
+personalized, and context-aware conversational experiences.
+• Ensure conversation logic maintains continuity across channels and supports
+proactive task completion.
+• Continuously improve development speed and quality through systematic use of
+AI augmentation.
+
+
+REQUIRED SKILLS
+
+• Strong Python development experience, including backend services and
+integrations.
+• Experience with spec-driven applied in real projects.
+• Hands-on experience integrating applications with LLMs (prompting,
+tool/function calling, reasoning patterns).
+• Ability to design and implement conversational logic, state management, and
+API-driven workflows.
+• Practical experience using AI coding assistants in daily development work.
+• Ability to work independently in a fast-paced, iterative delivery
+environment.
+
+
+PREFERRED / NICE TO HAVE
+
+• Experience building or integrating Conversational AI or Agentic AI
+components.
+• Exposure to RAG, context management, conversational memory, agentic
+patterns.
+• Experience integrating conversational systems with enterprise APIs and cloud
+environments (any cloud).
+• Understanding of multi-channel experience design (chat, voice, web).
+
+
+IMPACT
+
+You will define how AI-augmented development is executed in practice — using
+specifications and AI-driven tooling to deliver complete conversational
+solutions with greater speed, consistency, and intelligence.
+
+Your work will directly advance a next-generation Client Concierge experience
+capable of handling outcomes end-to-end with personalization and proactive
+assistance.

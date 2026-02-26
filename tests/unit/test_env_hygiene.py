@@ -1,7 +1,8 @@
 """
-Tests that .env.example exists with ANTHROPIC_API_KEY and .env is NOT committed.
-AC4: .env.example documents ANTHROPIC_API_KEY without a value; no .env in repo.
+Tests that .env.example exists with ANTHROPIC_API_KEY and .env is not committed.
+AC4: .env.example documents ANTHROPIC_API_KEY without a value; no committed .env.
 """
+import subprocess
 from pathlib import Path
 
 
@@ -12,10 +13,15 @@ def test_env_example_exists() -> None:
     assert (REPO_ROOT / ".env.example").exists(), ".env.example must exist"
 
 
-def test_env_file_not_present() -> None:
-    assert not (REPO_ROOT / ".env").exists(), (
-        ".env must never be committed — it contains secrets"
+def test_env_file_not_committed() -> None:
+    result = subprocess.run(
+        ["git", "ls-files", ".env"],
+        cwd=REPO_ROOT,
+        text=True,
+        capture_output=True,
+        check=True,
     )
+    assert result.stdout.strip() == "", ".env must never be committed - it contains secrets"
 
 
 def test_env_example_contains_anthropic_key() -> None:

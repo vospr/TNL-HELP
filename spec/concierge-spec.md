@@ -1,4 +1,4 @@
-# TNL-HELP Concierge Spec
+# TNL-HELP Concierge Spec - 2026-02-25 written before implementation
 <!-- v1.0 | 2026-02-25 | Written before implementation -->
 <!-- Author: Andrey | Status: Authoritative — code must not contradict this file silently -->
 

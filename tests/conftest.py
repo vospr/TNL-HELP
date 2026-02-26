@@ -5,6 +5,8 @@ No API mocking at root level (per architecture decision: integration/conftest.py
 from pathlib import Path
 import pytest
 
+from concierge.state import initialize_state
+
 
 REPO_ROOT = Path(__file__).parent.parent
 
@@ -24,3 +26,16 @@ def tmp_memory_dir(tmp_path: Path) -> Path:
     sessions.mkdir(parents=True)
     (sessions / ".gitkeep").touch()
     return tmp_path / "memory"
+
+
+@pytest.fixture
+def fresh_concierge_state() -> dict[str, object]:
+    """Fresh state fixture with session id and optional outputs initialized."""
+    return dict(
+        initialize_state(
+            user_id="alex",
+            session_id="session-test-state-reset",
+            current_input="",
+            turn_id=0,
+        )
+    )

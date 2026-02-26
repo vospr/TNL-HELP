@@ -30,6 +30,12 @@
     "last_query": "What are the best beach resorts in Southeast Asia for March 2026?",
     "cached_at": "2026-02-10T14:32:00Z"
   },
+  "cached_research_session": {
+    "topic": "Southeast Asia beach destinations 2026",
+    "session_id": "session_20260210_alex",
+    "cached_at": "2026-02-10T14:32:00Z"
+  },
+  "last_seen": "2026-02-25T00:00:00Z",
   "_demo_notes": {
     "preferred_name": "Alex",
     "demo_scenario": "Frequent premium traveler with Bali and Tokyo history. Southeast Asia is the active research context. Demo showcases: proactive greeting (memory load), two Stage 1 routing hits, two Stage 2 LLM escalations, and one guardrail boundary. Reset with: git checkout -- memory/profiles/alex.json",

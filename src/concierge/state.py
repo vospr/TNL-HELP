@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from typing import Any, Literal
-from typing_extensions import TypedDict
+from typing_extensions import NotRequired, TypedDict
 
 
 class ConciergeState(TypedDict):
@@ -28,6 +28,8 @@ class ConciergeState(TypedDict):
     clarification_question: str | None
     human_handoff: bool
     error: str | None
+    # Internal graph-tracking field used by tests to verify node execution order.
+    _executed_nodes: NotRequired[list[str]]
 
 
 class TurnResetUpdate(TypedDict):

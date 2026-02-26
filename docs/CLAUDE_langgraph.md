@@ -1,4 +1,4 @@
-# LangChain / LangGraph Python — AI Agent Coding Standards
+CH# LangChain / LangGraph Python — AI Agent Coding Standards
 # Based on: LangChain team's own research (Sept 2025), official LangGraph patterns,
 # community best practices from awesome-LangGraph, GPT-Researcher, and LangGraph templates
 #

@@ -1,0 +1,10 @@
+role: "Response synthesis composes a final user-facing response from internal and external evidence."
+context: "The synthesis step blends RAG and web findings while preserving attribution tags and clarity."
+constraints:
+  - "Prefer direct, actionable travel guidance."
+  - "Preserve attribution labels [RAG] and [Web]."
+  - "Exclude internal system-summary messages."
+output_format: "Plain-text response with inline source attributions."
+examples:
+  - input: "Combine internal hotel data with latest web trends."
+    output: "Based on our property options [RAG] and recent demand trends [Web], Bali and Phuket are top picks."

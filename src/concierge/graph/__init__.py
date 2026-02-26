@@ -122,7 +122,7 @@ def _track_node_execution(node_name: str, fn: Any) -> Any:
 def _build_langgraph_compiled() -> Any:
     from langgraph.graph import END, START, StateGraph  # pragma: no cover - optional dependency
 
-    graph = StateGraph(dict)
+    graph = StateGraph(ConciergeState)
     for node_name, fn in NODE_FUNCTIONS.items():
         graph.add_node(node_name, _track_node_execution(node_name, fn))
 

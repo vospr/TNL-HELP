@@ -1,0 +1,22 @@
+escalation_threshold: 0.72  # Stage-1 rule confidence required before skipping LLM escalation
+
+rules:
+  - pattern: '\b(wyndham|property|resort)\b'  # Property-oriented questions should route to internal KB retrieval
+    intent: property_lookup
+    route: rag
+    score: 0.91
+
+  - pattern: '\b(book|booking|reserve|reservation)\b'  # Explicit booking language should route to booking stub path
+    intent: booking_intent
+    route: booking_stub
+    score: 0.95
+
+  - pattern: '\b(trend|latest|right now|news)\b'  # Time-sensitive exploration prompts should route to research flow
+    intent: trend_research
+    route: research
+    score: 0.82
+
+  - pattern: '\b(weather|stock|crypto|politics)\b'  # Out-of-domain terms should trigger Stage-2 escalation for nuanced confidence handling
+    intent: out_of_domain
+    route: fallback
+    score: 0.3

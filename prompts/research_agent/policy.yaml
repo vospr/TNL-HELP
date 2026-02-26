@@ -1,0 +1,14 @@
+agent_name: research_agent
+model: claude-sonnet-4-6
+prompt_version: v1
+max_tokens: 1024
+confidence_threshold: 0.7
+max_clarifications: 3
+allowed_tools:
+  - duckduckgo_search
+prompt_sections:
+  - role
+  - context
+  - constraints
+  - output_format
+  - examples
